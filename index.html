@@ -152,6 +152,28 @@
             color: var(--accent-color);
         }
 
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.8rem;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -582,6 +604,11 @@
                 gap: 10px;
                 text-align: center;
             }
+            
+            .language-switcher {
+                margin-left: 0;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -594,11 +621,18 @@
                     <div><i class="fas fa-phone"></i> +84 28 1234 5678</div>
                     <div><i class="fas fa-envelope"></i> info@saigonlionsupplychain.com</div>
                 </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div style="display: flex; align-items: center;">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="vi">VN</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="zh">繁體</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -609,11 +643,11 @@
                     <h1>Saigon<span>Lion</span>SupplyChain</h1>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#home">Trang chủ</a></li>
-                    <li><a href="#about">Giới thiệu</a></li>
-                    <li><a href="#services">Dịch vụ</a></li>
-                    <li><a href="#solutions">Giải pháp</a></li>
-                    <li><a href="#contact">Liên hệ</a></li>
+                    <li><a href="#home" data-key="nav.home">Trang chủ</a></li>
+                    <li><a href="#about" data-key="nav.about">Giới thiệu</a></li>
+                    <li><a href="#services" data-key="nav.services">Dịch vụ</a></li>
+                    <li><a href="#solutions" data-key="nav.solutions">Giải pháp</a></li>
+                    <li><a href="#contact" data-key="nav.contact">Liên hệ</a></li>
                 </ul>
                 <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
@@ -625,11 +659,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h2>Giải Pháp Logistics Toàn Diện</h2>
-            <p>SaigonLionSupplyChain cung cấp các dịch vụ logistics chuyên nghiệp, tối ưu hóa chuỗi cung ứng và nâng cao hiệu quả kinh doanh cho doanh nghiệp.</p>
+            <h2 data-key="hero.title">Giải Pháp Logistics Toàn Diện</h2>
+            <p data-key="hero.subtitle">SaigonLionSupplyChain cung cấp các dịch vụ logistics chuyên nghiệp, tối ưu hóa chuỗi cung ứng và nâng cao hiệu quả kinh doanh cho doanh nghiệp.</p>
             <div class="hero-btns">
-                <a href="#services" class="btn">Dịch vụ của chúng tôi</a>
-                <a href="#contact" class="btn btn-secondary">Liên hệ ngay</a>
+                <a href="#services" class="btn" data-key="hero.servicesBtn">Dịch vụ của chúng tôi</a>
+                <a href="#contact" class="btn btn-secondary" data-key="hero.contactBtn">Liên hệ ngay</a>
             </div>
         </div>
     </section>
@@ -638,8 +672,8 @@
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
-                <h2>Dịch Vụ Của Chúng Tôi</h2>
-                <p>Chúng tôi cung cấp các giải pháp logistics toàn diện, đáp ứng mọi nhu cầu của doanh nghiệp</p>
+                <h2 data-key="services.title">Dịch Vụ Của Chúng Tôi</h2>
+                <p data-key="services.subtitle">Chúng tôi cung cấp các giải pháp logistics toàn diện, đáp ứng mọi nhu cầu của doanh nghiệp</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -647,9 +681,9 @@
                         <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Vận tải đường bộ">
                     </div>
                     <div class="service-content">
-                        <h3>Vận Tải Đường Bộ</h3>
-                        <p>Dịch vụ vận tải đường bộ chuyên nghiệp với đội xe đa dạng, đáp ứng mọi nhu cầu vận chuyển hàng hóa.</p>
-                        <a href="#">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                        <h3 data-key="services.road.title">Vận Tải Đường Bộ</h3>
+                        <p data-key="services.road.desc">Dịch vụ vận tải đường bộ chuyên nghiệp với đội xe đa dạng, đáp ứng mọi nhu cầu vận chuyển hàng hóa.</p>
+                        <a href="#" data-key="services.learnMore">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
@@ -657,9 +691,9 @@
                         <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Vận tải biển">
                     </div>
                     <div class="service-content">
-                        <h3>Vận Tải Biển</h3>
-                        <p>Giải pháp vận tải biển tối ưu với mạng lưới đối tác toàn cầu, đảm bảo thời gian và chi phí cạnh tranh.</p>
-                        <a href="#">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                        <h3 data-key="services.sea.title">Vận Tải Biển</h3>
+                        <p data-key="services.sea.desc">Giải pháp vận tải biển tối ưu với mạng lưới đối tác toàn cầu, đảm bảo thời gian và chi phí cạnh tranh.</p>
+                        <a href="#" data-key="services.learnMore">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
@@ -667,9 +701,9 @@
                         <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="Kho bãi và phân phối">
                     </div>
                     <div class="service-content">
-                        <h3>Kho Bãi & Phân Phối</h3>
-                        <p>Hệ thống kho bãi hiện đại với công nghệ quản lý tiên tiến, đáp ứng nhu cầu lưu trữ và phân phối hàng hóa.</p>
-                        <a href="#">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+                        <h3 data-key="services.warehouse.title">Kho Bãi & Phân Phối</h3>
+                        <p data-key="services.warehouse.desc">Hệ thống kho bãi hiện đại với công nghệ quản lý tiên tiến, đáp ứng nhu cầu lưu trữ và phân phối hàng hóa.</p>
+                        <a href="#" data-key="services.learnMore">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -681,35 +715,35 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Về SaigonLionSupplyChain</h2>
-                    <p>Với hơn 15 năm kinh nghiệm trong lĩnh vực logistics, SaigonLionSupplyChain tự hào là đối tác tin cậy của hàng trăm doanh nghiệp trong và ngoài nước.</p>
-                    <p>Chúng tôi cam kết mang đến những giải pháp tối ưu, giúp khách hàng tiết kiệm chi phí và nâng cao hiệu quả chuỗi cung ứng.</p>
+                    <h2 data-key="about.title">Về SaigonLionSupplyChain</h2>
+                    <p data-key="about.desc1">Với hơn 15 năm kinh nghiệm trong lĩnh vực logistics, SaigonLionSupplyChain tự hào là đối tác tin cậy của hàng trăm doanh nghiệp trong và ngoài nước.</p>
+                    <p data-key="about.desc2">Chúng tôi cam kết mang đến những giải pháp tối ưu, giúp khách hàng tiết kiệm chi phí và nâng cao hiệu quả chuỗi cung ứng.</p>
                     
                     <div class="about-features">
                         <div class="feature">
                             <i class="fas fa-check-circle"></i>
                             <div>
-                                <h3>Đội ngũ chuyên nghiệp</h3>
-                                <p>Đội ngũ nhân viên giàu kinh nghiệm, được đào tạo chuyên sâu về logistics.</p>
+                                <h3 data-key="about.feature1.title">Đội ngũ chuyên nghiệp</h3>
+                                <p data-key="about.feature1.desc">Đội ngũ nhân viên giàu kinh nghiệm, được đào tạo chuyên sâu về logistics.</p>
                             </div>
                         </div>
                         <div class="feature">
                             <i class="fas fa-check-circle"></i>
                             <div>
-                                <h3>Công nghệ tiên tiến</h3>
-                                <p>Ứng dụng công nghệ hiện đại trong quản lý và vận hành chuỗi cung ứng.</p>
+                                <h3 data-key="about.feature2.title">Công nghệ tiên tiến</h3>
+                                <p data-key="about.feature2.desc">Ứng dụng công nghệ hiện đại trong quản lý và vận hành chuỗi cung ứng.</p>
                             </div>
                         </div>
                         <div class="feature">
                             <i class="fas fa-check-circle"></i>
                             <div>
-                                <h3>Mạng lưới toàn cầu</h3>
-                                <p>Hệ thống đối tác rộng khắp, đảm bảo dịch vụ xuyên suốt và liên tục.</p>
+                                <h3 data-key="about.feature3.title">Mạng lưới toàn cầu</h3>
+                                <p data-key="about.feature3.desc">Hệ thống đối tác rộng khắp, đảm bảo dịch vụ xuyên suốt và liên tục.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="#" class="btn">Tìm hiểu thêm về chúng tôi</a>
+                    <a href="#" class="btn" data-key="about.learnMore">Tìm hiểu thêm về chúng tôi</a>
                 </div>
                 <div class="about-img">
                     <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Về SaigonLionSupplyChain">
@@ -725,22 +759,22 @@
                 <div class="stat-item">
                     <i class="fas fa-ship"></i>
                     <h3>500+</h3>
-                    <p>Lượt vận chuyển mỗi tháng</p>
+                    <p data-key="stats.shipments">Lượt vận chuyển mỗi tháng</p>
                 </div>
                 <div class="stat-item">
                     <i class="fas fa-warehouse"></i>
                     <h3>50+</h3>
-                    <p>Kho bãi trên toàn quốc</p>
+                    <p data-key="stats.warehouses">Kho bãi trên toàn quốc</p>
                 </div>
                 <div class="stat-item">
                     <i class="fas fa-users"></i>
                     <h3>200+</h3>
-                    <p>Nhân viên chuyên nghiệp</p>
+                    <p data-key="stats.employees">Nhân viên chuyên nghiệp</p>
                 </div>
                 <div class="stat-item">
                     <i class="fas fa-globe-asia"></i>
                     <h3>30+</h3>
-                    <p>Quốc gia đối tác</p>
+                    <p data-key="stats.countries">Quốc gia đối tác</p>
                 </div>
             </div>
         </div>
@@ -750,19 +784,19 @@
     <section class="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Khách Hàng Nói Gì Về Chúng Tôi</h2>
-                <p>Những phản hồi tích cực từ đối tác và khách hàng là động lực để chúng tôi không ngừng cải thiện dịch vụ</p>
+                <h2 data-key="testimonials.title">Khách Hàng Nói Gì Về Chúng Tôi</h2>
+                <p data-key="testimonials.subtitle">Những phản hồi tích cực từ đối tác và khách hàng là động lực để chúng tôi không ngừng cải thiện dịch vụ</p>
             </div>
             <div class="testimonial-slider">
                 <div class="testimonial-item">
-                    <p class="testimonial-text">"SaigonLionSupplyChain đã giúp chúng tôi tối ưu hóa chuỗi cung ứng, giảm 20% chi phí logistics và cải thiện đáng kể thời gian giao hàng. Dịch vụ chuyên nghiệp và đáng tin cậy!"</p>
+                    <p class="testimonial-text" data-key="testimonials.quote">"SaigonLionSupplyChain đã giúp chúng tôi tối ưu hóa chuỗi cung ứng, giảm 20% chi phí logistics và cải thiện đáng kể thời gian giao hàng. Dịch vụ chuyên nghiệp và đáng tin cậy!"</p>
                     <div class="testimonial-author">
                         <div class="author-img">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Nguyễn Văn A">
                         </div>
                         <div class="author-info">
-                            <h4>Nguyễn Văn A</h4>
-                            <p>Giám đốc Công ty ABC</p>
+                            <h4 data-key="testimonials.author">Nguyễn Văn A</h4>
+                            <p data-key="testimonials.position">Giám đốc Công ty ABC</p>
                         </div>
                     </div>
                 </div>
@@ -773,9 +807,9 @@
     <!-- CTA Section -->
     <section class="cta" id="contact">
         <div class="container">
-            <h2>Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?</h2>
-            <p>Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn và báo giá miễn phí cho giải pháp logistics phù hợp với doanh nghiệp của bạn.</p>
-            <a href="#" class="btn">Liên hệ ngay</a>
+            <h2 data-key="cta.title">Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?</h2>
+            <p data-key="cta.subtitle">Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn và báo giá miễn phí cho giải pháp logistics phù hợp với doanh nghiệp của bạn.</p>
+            <a href="#" class="btn" data-key="cta.button">Liên hệ ngay</a>
         </div>
     </section>
 
@@ -785,7 +819,7 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <h3>SaigonLionSupplyChain</h3>
-                    <p>Công ty hàng đầu cung cấp giải pháp logistics và chuỗi cung ứng tại Việt Nam và khu vực.</p>
+                    <p data-key="footer.desc">Công ty hàng đầu cung cấp giải pháp logistics và chuỗi cung ứng tại Việt Nam và khu vực.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -794,31 +828,31 @@
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h3>Dịch vụ</h3>
+                    <h3 data-key="footer.services">Dịch vụ</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Vận tải đường bộ</a></li>
-                        <li><a href="#">Vận tải biển</a></li>
-                        <li><a href="#">Vận tải hàng không</a></li>
-                        <li><a href="#">Kho bãi và phân phối</a></li>
-                        <li><a href="#">Tư vấn chuỗi cung ứng</a></li>
+                        <li><a href="#" data-key="services.road.title">Vận tải đường bộ</a></li>
+                        <li><a href="#" data-key="services.sea.title">Vận tải biển</a></li>
+                        <li><a href="#" data-key="footer.airFreight">Vận tải hàng không</a></li>
+                        <li><a href="#" data-key="services.warehouse.title">Kho bãi và phân phối</a></li>
+                        <li><a href="#" data-key="footer.consulting">Tư vấn chuỗi cung ứng</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Liên kết nhanh</h3>
+                    <h3 data-key="footer.quickLinks">Liên kết nhanh</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Trang chủ</a></li>
-                        <li><a href="#about">Giới thiệu</a></li>
-                        <li><a href="#services">Dịch vụ</a></li>
-                        <li><a href="#solutions">Giải pháp</a></li>
-                        <li><a href="#contact">Liên hệ</a></li>
+                        <li><a href="#home" data-key="nav.home">Trang chủ</a></li>
+                        <li><a href="#about" data-key="nav.about">Giới thiệu</a></li>
+                        <li><a href="#services" data-key="nav.services">Dịch vụ</a></li>
+                        <li><a href="#solutions" data-key="nav.solutions">Giải pháp</a></li>
+                        <li><a href="#contact" data-key="nav.contact">Liên hệ</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Liên hệ</h3>
+                    <h3 data-key="footer.contact">Liên hệ</h3>
                     <ul class="contact-list">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh, Việt Nam</span>
+                            <span data-key="footer.address">123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh, Việt Nam</span>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
@@ -830,38 +864,295 @@
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
-                            <span>Thứ 2 - Thứ 6: 8:00 - 17:30</span>
+                            <span data-key="footer.hours">Thứ 2 - Thứ 6: 8:00 - 17:30</span>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 SaigonLionSupplyChain. Tất cả các quyền được bảo lưu.</p>
+                <p>&copy; 2023 SaigonLionSupplyChain. <span data-key="footer.rights">Tất cả các quyền được bảo lưu.</span></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Ngôn ngữ translations
+        const translations = {
+            vi: {
+                // Navigation
+                'nav.home': 'Trang chủ',
+                'nav.about': 'Giới thiệu',
+                'nav.services': 'Dịch vụ',
+                'nav.solutions': 'Giải pháp',
+                'nav.contact': 'Liên hệ',
                 
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                // Hero
+                'hero.title': 'Giải Pháp Logistics Toàn Diện',
+                'hero.subtitle': 'SaigonLionSupplyChain cung cấp các dịch vụ logistics chuyên nghiệp, tối ưu hóa chuỗi cung ứng và nâng cao hiệu quả kinh doanh cho doanh nghiệp.',
+                'hero.servicesBtn': 'Dịch vụ của chúng tôi',
+                'hero.contactBtn': 'Liên hệ ngay',
                 
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
+                // Services
+                'services.title': 'Dịch Vụ Của Chúng Tôi',
+                'services.subtitle': 'Chúng tôi cung cấp các giải pháp logistics toàn diện, đáp ứng mọi nhu cầu của doanh nghiệp',
+                'services.road.title': 'Vận Tải Đường Bộ',
+                'services.road.desc': 'Dịch vụ vận tải đường bộ chuyên nghiệp với đội xe đa dạng, đáp ứng mọi nhu cầu vận chuyển hàng hóa.',
+                'services.sea.title': 'Vận Tải Biển',
+                'services.sea.desc': 'Giải pháp vận tải biển tối ưu với mạng lưới đối tác toàn cầu, đảm bảo thời gian và chi phí cạnh tranh.',
+                'services.warehouse.title': 'Kho Bãi & Phân Phối',
+                'services.warehouse.desc': 'Hệ thống kho bãi hiện đại với công nghệ quản lý tiên tiến, đáp ứng nhu cầu lưu trữ và phân phối hàng hóa.',
+                'services.learnMore': 'Tìm hiểu thêm',
+                
+                // About
+                'about.title': 'Về SaigonLionSupplyChain',
+                'about.desc1': 'Với hơn 15 năm kinh nghiệm trong lĩnh vực logistics, SaigonLionSupplyChain tự hào là đối tác tin cậy của hàng trăm doanh nghiệp trong và ngoài nước.',
+                'about.desc2': 'Chúng tôi cam kết mang đến những giải pháp tối ưu, giúp khách hàng tiết kiệm chi phí và nâng cao hiệu quả chuỗi cung ứng.',
+                'about.feature1.title': 'Đội ngũ chuyên nghiệp',
+                'about.feature1.desc': 'Đội ngũ nhân viên giàu kinh nghiệm, được đào tạo chuyên sâu về logistics.',
+                'about.feature2.title': 'Công nghệ tiên tiến',
+                'about.feature2.desc': 'Ứng dụng công nghệ hiện đại trong quản lý và vận hành chuỗi cung ứng.',
+                'about.feature3.title': 'Mạng lưới toàn cầu',
+                'about.feature3.desc': 'Hệ thống đối tác rộng khắp, đảm bảo dịch vụ xuyên suốt và liên tục.',
+                'about.learnMore': 'Tìm hiểu thêm về chúng tôi',
+                
+                // Stats
+                'stats.shipments': 'Lượt vận chuyển mỗi tháng',
+                'stats.warehouses': 'Kho bãi trên toàn quốc',
+                'stats.employees': 'Nhân viên chuyên nghiệp',
+                'stats.countries': 'Quốc gia đối tác',
+                
+                // Testimonials
+                'testimonials.title': 'Khách Hàng Nói Gì Về Chúng Tôi',
+                'testimonials.subtitle': 'Những phản hồi tích cực từ đối tác và khách hàng là động lực để chúng tôi không ngừng cải thiện dịch vụ',
+                'testimonials.quote': '"SaigonLionSupplyChain đã giúp chúng tôi tối ưu hóa chuỗi cung ứng, giảm 20% chi phí logistics và cải thiện đáng kể thời gian giao hàng. Dịch vụ chuyên nghiệp và đáng tin cậy!"',
+                'testimonials.author': 'Nguyễn Văn A',
+                'testimonials.position': 'Giám đốc Công ty ABC',
+                
+                // CTA
+                'cta.title': 'Sẵn sàng tối ưu hóa chuỗi cung ứng của bạn?',
+                'cta.subtitle': 'Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn và báo giá miễn phí cho giải pháp logistics phù hợp với doanh nghiệp của bạn.',
+                'cta.button': 'Liên hệ ngay',
+                
+                // Footer
+                'footer.desc': 'Công ty hàng đầu cung cấp giải pháp logistics và chuỗi cung ứng tại Việt Nam và khu vực.',
+                'footer.services': 'Dịch vụ',
+                'footer.airFreight': 'Vận tải hàng không',
+                'footer.consulting': 'Tư vấn chuỗi cung ứng',
+                'footer.quickLinks': 'Liên kết nhanh',
+                'footer.contact': 'Liên hệ',
+                'footer.address': '123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh, Việt Nam',
+                'footer.hours': 'Thứ 2 - Thứ 6: 8:00 - 17:30',
+                'footer.rights': 'Tất cả các quyền được bảo lưu.'
+            },
+            en: {
+                // Navigation
+                'nav.home': 'Home',
+                'nav.about': 'About',
+                'nav.services': 'Services',
+                'nav.solutions': 'Solutions',
+                'nav.contact': 'Contact',
+                
+                // Hero
+                'hero.title': 'Comprehensive Logistics Solutions',
+                'hero.subtitle': 'SaigonLionSupplyChain provides professional logistics services, optimizing supply chains and enhancing business efficiency for enterprises.',
+                'hero.servicesBtn': 'Our Services',
+                'hero.contactBtn': 'Contact Now',
+                
+                // Services
+                'services.title': 'Our Services',
+                'services.subtitle': 'We provide comprehensive logistics solutions to meet all business needs',
+                'services.road.title': 'Road Transport',
+                'services.road.desc': 'Professional road transport services with diverse fleet, meeting all cargo transportation needs.',
+                'services.sea.title': 'Sea Freight',
+                'services.sea.desc': 'Optimal sea freight solutions with global partner network, ensuring competitive time and cost.',
+                'services.warehouse.title': 'Warehousing & Distribution',
+                'services.warehouse.desc': 'Modern warehouse system with advanced management technology, meeting storage and distribution needs.',
+                'services.learnMore': 'Learn More',
+                
+                // About
+                'about.title': 'About SaigonLionSupplyChain',
+                'about.desc1': 'With over 15 years of experience in logistics, SaigonLionSupplyChain is proud to be the trusted partner of hundreds of domestic and international businesses.',
+                'about.desc2': 'We are committed to providing optimal solutions, helping customers save costs and improve supply chain efficiency.',
+                'about.feature1.title': 'Professional Team',
+                'about.feature1.desc': 'Experienced staff with specialized training in logistics.',
+                'about.feature2.title': 'Advanced Technology',
+                'about.feature2.desc': 'Application of modern technology in supply chain management and operation.',
+                'about.feature3.title': 'Global Network',
+                'about.feature3.desc': 'Extensive partner system ensuring continuous and uninterrupted services.',
+                'about.learnMore': 'Learn More About Us',
+                
+                // Stats
+                'stats.shipments': 'Shipments per month',
+                'stats.warehouses': 'Warehouses nationwide',
+                'stats.employees': 'Professional employees',
+                'stats.countries': 'Partner countries',
+                
+                // Testimonials
+                'testimonials.title': 'What Our Clients Say',
+                'testimonials.subtitle': 'Positive feedback from partners and clients motivates us to continuously improve our services',
+                'testimonials.quote': '"SaigonLionSupplyChain helped us optimize our supply chain, reduce logistics costs by 20% and significantly improve delivery times. Professional and reliable service!"',
+                'testimonials.author': 'John Smith',
+                'testimonials.position': 'Director of ABC Company',
+                
+                // CTA
+                'cta.title': 'Ready to optimize your supply chain?',
+                'cta.subtitle': 'Contact us today for free consultation and quotation for logistics solutions suitable for your business.',
+                'cta.button': 'Contact Now',
+                
+                // Footer
+                'footer.desc': 'Leading company providing logistics and supply chain solutions in Vietnam and the region.',
+                'footer.services': 'Services',
+                'footer.airFreight': 'Air Freight',
+                'footer.consulting': 'Supply Chain Consulting',
+                'footer.quickLinks': 'Quick Links',
+                'footer.contact': 'Contact',
+                'footer.address': '123 Le Loi Street, District 1, Ho Chi Minh City, Vietnam',
+                'footer.hours': 'Monday - Friday: 8:00 - 17:30',
+                'footer.rights': 'All rights reserved.'
+            },
+            zh: {
+                // Navigation
+                'nav.home': '首頁',
+                'nav.about': '關於我們',
+                'nav.services': '服務項目',
+                'nav.solutions': '解決方案',
+                'nav.contact': '聯絡我們',
+                
+                // Hero
+                'hero.title': '全面物流解決方案',
+                'hero.subtitle': '西貢獅子供應鏈提供專業物流服務，優化供應鏈並提升企業業務效率。',
+                'hero.servicesBtn': '我們的服務',
+                'hero.contactBtn': '立即聯絡',
+                
+                // Services
+                'services.title': '我們的服務',
+                'services.subtitle': '我們提供全面的物流解決方案，滿足所有業務需求',
+                'services.road.title': '公路運輸',
+                'services.road.desc': '專業公路運輸服務，擁有多樣化車隊，滿足所有貨物運輸需求。',
+                'services.sea.title': '海運服務',
+                'services.sea.desc': '最佳海運解決方案，擁有全球合作夥伴網絡，確保競爭力的時間和成本。',
+                'services.warehouse.title': '倉儲與配送',
+                'services.warehouse.desc': '現代化倉儲系統配備先進管理技術，滿足存儲和配送需求。',
+                'services.learnMore': '了解更多',
+                
+                // About
+                'about.title': '關於西貢獅子供應鏈',
+                'about.desc1': '擁有超過15年物流經驗，西貢獅子供應鏈自豪成為數百家國內外企業的值得信賴合作夥伴。',
+                'about.desc2': '我們致力於提供最佳解決方案，幫助客戶節省成本並提高供應鏈效率。',
+                'about.feature1.title': '專業團隊',
+                'about.feature1.desc': '經驗豐富的員工，接受過物流專業培訓。',
+                'about.feature2.title': '先進技術',
+                'about.feature2.desc': '在供應鏈管理和運營中應用現代技術。',
+                'about.feature3.title': '全球網絡',
+                'about.feature3.desc': '廣泛的合作夥伴系統確保服務連續不間斷。',
+                'about.learnMore': '了解更多關於我們',
+                
+                // Stats
+                'stats.shipments': '每月運輸量',
+                'stats.warehouses': '全國倉庫',
+                'stats.employees': '專業員工',
+                'stats.countries': '合作國家',
+                
+                // Testimonials
+                'testimonials.title': '客戶評價',
+                'testimonials.subtitle': '來自合作夥伴和客戶的積極反饋激勵我們不斷改進服務',
+                'testimonials.quote': '"西貢獅子供應鏈幫助我們優化供應鏈，降低物流成本20%並顯著改善交貨時間。專業可靠的服務！"',
+                'testimonials.author': '張偉',
+                'testimonials.position': 'ABC公司董事',
+                
+                // CTA
+                'cta.title': '準備好優化您的供應鏈了嗎？',
+                'cta.subtitle': '立即聯絡我們，為您的企業獲取適合的物流解決方案的免費咨詢和報價。',
+                'cta.button': '立即聯絡',
+                
+                // Footer
+                'footer.desc': '在越南和地區提供物流和供應鏈解決方案的領先公司。',
+                'footer.services': '服務項目',
+                'footer.airFreight': '空運服務',
+                'footer.consulting': '供應鏈咨詢',
+                'footer.quickLinks': '快速連結',
+                'footer.contact': '聯絡我們',
+                'footer.address': '越南胡志明市第一郡黎利街123號',
+                'footer.hours': '週一至週五: 8:00 - 17:30',
+                'footer.rights': '保留所有權利。'
+            }
+        };
+
+        // Language switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            let currentLang = 'vi';
+            
+            // Load saved language from localStorage
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang) {
+                currentLang = savedLang;
+                updateActiveLangButton(currentLang);
+            }
+            
+            function updateActiveLangButton(lang) {
+                langButtons.forEach(btn => {
+                    if (btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+            
+            function switchLanguage(lang) {
+                const elements = document.querySelectorAll('[data-key]');
+                
+                elements.forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = translations[lang][key];
+                        } else {
+                            element.textContent = translations[lang][key];
+                        }
+                    }
+                });
+                
+                currentLang = lang;
+                localStorage.setItem('preferredLang', lang);
+                updateActiveLangButton(lang);
+                
+                // Update HTML lang attribute
+                document.documentElement.lang = lang;
+            }
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    switchLanguage(lang);
+                });
+            });
+            
+            // Initialize with current language
+            switchLanguage(currentLang);
+            
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
